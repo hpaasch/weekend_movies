@@ -12,24 +12,25 @@ def rater_data(apps, schema_editor):
     Rater = apps.get_model("rate_the_movies", "Rater")
 
     with open("u.rater") as rater_file:
-        fieldnames = ["age", "gender", "occupation", "zip_code"]
+        fieldnames = ["id", "age", "gender", "occupation", "zip_code"]
         raters = csv.DictReader(rater_file, delimiter="|", fieldnames=fieldnames)
 
         for row in raters:
             Rater.objects.create(
+                id=row['id'],
                 age=int(row['age']),
                 gender=row['gender'],
                 occupation=row['occupation'],
                 zip_code=row['zip_code']
             )
-    raise Exception("rater passes")
+    # raise Exception("rater passes")
 
 
 def movie_data(apps, schema_editor):
     Movie = apps.get_model("rate_the_movies", "Movie")
 
     with open("u.movie", encoding="latin1") as movie_file:
-        fieldnames = ["movie_title", "release_date", "video_release_date", "imdb_url",
+        fieldnames = ["id", "movie_title", "release_date", "video_release_date", "imdb_url",
                       "unknown", "action", "adventure", "animation", "children", "comedy", "crime",
                       "documentary", "drama", "fantasy", "film_noir", "horror", "musical", "mystery",
                       "romance", "scifi", "thriller", "war", "western"]
@@ -37,6 +38,7 @@ def movie_data(apps, schema_editor):
 
         for row in movies:
             Movie.objects.create(
+                id=row["id"],
                 movie_title=row["movie_title"], release_date=row["release_date"],
                 video_release_date=row["video_release_date"], imdb_url=row["imdb_url"],
                 unknown=int(row["unknown"]), action=int(row["action"]),
@@ -50,15 +52,30 @@ def movie_data(apps, schema_editor):
 
             )
 
-    raise Exception("movie passes")
+    # raise Exception("movie passes")
 
 
 def rating_data(apps, schema_editor):
-    Rating = apps.get_model("rate_the_movies", "Movie")
+    Rater = apps.get_model("rate_the_movies", "Rater")
+    Movie = apps.get_model("rate_the_movies", "Movie")
+    Rating = apps.get_model("rate_the_movies", "Rating")
 
     with open("u.rating") as rating_file:
-        fieldnames = [""]
-        pass
+        fieldnames = ['rater_id', 'movie_id', 'rating', 'timestamp']
+        ratings = csv.DictReader(rating_file, delimiter='\t', fieldnames=fieldnames)
+
+        for row in ratings:
+            temp_rater_id = Rater.objects.get(id=row['rater_id'])
+            temp_movie_id = Movie.objects.get(id=row['movie_id'])
+            Rating.objects.create(
+                rater=temp_rater_id,
+                movie=temp_movie_id,
+                rating=row['rating'],
+                timestamp=row['timestamp']
+
+            )
+
+    # raise Exception("rating passes")
 
 
 class Migration(migrations.Migration):
@@ -68,7 +85,7 @@ class Migration(migrations.Migration):
     ]
 
     operations = [
-        # migrations.RunPython(rater_data)
-        migrations.RunPython(movie_data)
-        # migrations.RunPython(rating_data)
+        migrations.RunPython(rater_data),
+        migrations.RunPython(movie_data),
+        migrations.RunPython(rating_data)
     ]
