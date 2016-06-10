@@ -10,16 +10,16 @@ class Rater(models.Model):
     def __str__(self):
         return self.occupation
 
-    def average_score(self):
+    # def average_score(self):
         # deliver each rater's avg rating
 
 
-        pass
+    #     pass
 
-    def not_yet_seen(self):
+    # def not_yet_seen(self):
         # top-rated movies not seen yet for each rater
 
-        pass
+    #     pass
 
 
 class Movie(models.Model):
@@ -50,22 +50,13 @@ class Movie(models.Model):
     def __str__(self):
         return self.movie_title
 
-    def average_rating(self):
-        from statistics import mean
-        movie_ratings = []
-        mean(movie_ratings)
-        # deliver each movie's average rating
 
 
-
-        pass
-
-    # top movies by rating
-    class Meta:
-         ordering = # order by the average_rating?
-
-
-        pass
+    # class Meta:
+    #      ordering = # order by the average_rating?
+#
+#
+    #     pass
 
     def nearest_neighbor(self, rater_a, rater_b):
         rater_a_list = ["A", "B", "C", "D"]
@@ -85,3 +76,5 @@ class Rating(models.Model):
 
     def __str__(self):
         return self.movie
+
+
