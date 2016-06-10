@@ -10,6 +10,17 @@ class Rater(models.Model):
     def __str__(self):
         return self.occupation
 
+    def average_score(self):
+        # deliver each rater's avg rating
+
+
+        pass
+
+    def not_yet_seen(self):
+        # top-rated movies not seen yet for each rater
+
+        pass
+
 
 class Movie(models.Model):
     movie_title = models.CharField(max_length=75)
@@ -38,6 +49,32 @@ class Movie(models.Model):
 
     def __str__(self):
         return self.movie_title
+
+    def average_rating(self):
+        from statistics import mean
+        movie_ratings = []
+        mean(movie_ratings)
+        # deliver each movie's average rating
+
+
+
+        pass
+
+    # top movies by rating
+    class Meta:
+         ordering = # order by the average_rating?
+
+
+        pass
+
+    def nearest_neighbor(self, rater_a, rater_b):
+        rater_a_list = ["A", "B", "C", "D"]
+        rater_b_list = ["B", "D", "E", "F"]
+        seta = set(rater_a_list)
+        setb = set(rater_b_list)
+        shared = seta.intersection(setb)
+        print(shared)
+        pass
 
 
 class Rating(models.Model):
