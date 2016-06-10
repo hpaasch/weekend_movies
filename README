@@ -1,0 +1,5 @@
+To make the schema and data migrations slightly more challenging, I changed the
+filenames like so:
+u.rater = u.user
+u.movie = u.item
+u.rating = u.data
