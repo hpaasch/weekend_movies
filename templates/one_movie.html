@@ -2,12 +2,16 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>{{ movie.movie_title }}</title>
+    <title>Big Movie Extravaganza</title>
 </head>
 <body>
     <h1>{{ movie.movie_title }}</h1>
-    <h3>{{ movie.release_date }}</h3>
-    # avg rating
-    # each rater ... linked to rater page
+    <h5>{{ movie.release_date }}</h5>
+    <h3>Average rating: {{ average }} needs to be prettier</h3>
+    <h4>List of raters, by occupation. Click for more on that person.</h4>
+    {% for item in ratings %}
+    <p>This {{ item.rater }}'s rating: {{ item.rating }}</p>
+    {% endfor %}
+   <!-- needs to link to rater's page -->
 </body>
 </html>
