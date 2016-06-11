@@ -3,10 +3,12 @@ from django.shortcuts import render
 from rate_the_movies.models import Rating, Rater, Movie
 from django.db.models import Avg, Count
 
+
 def top_movies(request):
     context = {
-        "top_movies": (Rating.objects.annotate(xxx=Count('yyy').order_by('-xxx')[:20]),
-        # Publisher.objects.annotate(num_books=Count('book')).order_by('-num_books')[:5]
+        "top_movies": Rating.objects.annotate(best=Avg('rating')).order_by('-best')[:20],
+        "average": Rating.objects.filter(movie=movie_id).aggregate(Avg('rating')),
+
 
     }
     return render(request, "movie_list.html", context)

@@ -9,7 +9,9 @@
     <p> These films were evaluated by a cross-section of regular moviegoers who rated them.</p>
     <p> Each movie shows it's average rating. See more on a movie by clicking the link.</p>
     <h3> And now, the Top 20:</h3>
-    <h3> {{ top_movies }} </h3>
+    {% for movie in top_movies %}
+    <h3> {{ movie.movie.movie_title }} {{ movie. }}</h3>
+    {% endfor %}
 
 
 </body>
