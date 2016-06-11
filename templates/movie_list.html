@@ -10,7 +10,7 @@
     <p> Each movie shows it's average rating. See more on a movie by clicking the link.</p>
     <h3> And now, the Top 20:</h3>
     {% for movie in top_movies %}
-    <h3> {{ movie.movie.movie_title }} {{ movie. }}</h3>
+    <p> {{ movie.movie.movie_title }} {{ movie.avg_rating }}</p>
     {% endfor %}
 
 

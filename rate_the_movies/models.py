@@ -8,18 +8,7 @@ class Rater(models.Model):
     zip_code = models.CharField(max_length=10)
 
     def __str__(self):
-        return self.id
-
-    # def average_score(self):
-        # deliver each rater's avg rating
-
-
-    #     pass
-
-    # def not_yet_seen(self):
-        # top-rated movies not seen yet for each rater
-
-    #     pass
+        return str(self.id)
 
 
 class Movie(models.Model):
@@ -48,15 +37,7 @@ class Movie(models.Model):
     western = models.IntegerField()
 
     def __str__(self):
-        return self.movie_title
-
-
-
-    # class Meta:
-    #      ordering = # order by the average_rating?
-#
-#
-    #     pass
+        return self.movie_title  # str(self.id) change?
 
     def nearest_neighbor(self, rater_a, rater_b):
         rater_a_list = ["A", "B", "C", "D"]
@@ -78,3 +59,7 @@ class Rating(models.Model):
     #     return self.movie
 
 
+class TopMovie(models.Model):
+    movie = models.ForeignKey(Movie)
+    avg_rating = models.FloatField()
+    times_rated = models.IntegerField()
