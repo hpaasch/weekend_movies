@@ -5,13 +5,17 @@
     <title>Big Movie Extravaganza</title>
 </head>
 <body>
-    <h1>{{ movie.movie_title }}</h1>
-    <h5>{{ movie.release_date }}</h5>
-    <h3>Average rating: {{ average }} needs to be prettier</h3>
+    <h1><a href="{{ movie.imdb_url }}">{{ movie.movie_title }} </a> </h1>
+    <h5>Original release date: {{ movie.release_date }}</h5>
+    <h5>Video release date: {{ movie.video_release_date }}</h5>
+    
+    <h3>This movie has been rated by {{ total }} people.</h3>
+    <h3>The average rating is {{ average }} needs to be prettier</h3>
     <h4>List of raters, by occupation. Click for more on that person.</h4>
     {% for item in ratings %}
-    <p>This {{ item.rater }}'s rating: {{ item.rating }}</p>
+    <p>This {{ item.rater }}'s</a> rating: {{ item.rating }}</p>
     {% endfor %}
-   <!-- needs to link to rater's page -->
+   <!-- each rater needs to link to that rater's page -->
+   <!-- display more about the movie? genre, on video?  -->
 </body>
 </html>

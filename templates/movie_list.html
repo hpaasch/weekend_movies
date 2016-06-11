@@ -2,18 +2,15 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Top 20 Movies</title>
+    <title>Big Movie Extravaganza</title>
 </head>
 <body>
-    <h1>The Top 20 Movies of the entire history of film</h1>
-    <p>These films were evaluated by a cross-section of regular moviegoers who rated them.</p>
-    <p>Each movie shows it's average rating. See more on a movie by clicking the link.</p>
-    <h3>And now, the Top 20:</h3>
-    {% for movie in movies %}
-        <ul>
-            <li> {{ movie }}  </li>
-            <li> {{ movie.release_date }} </li> <!-- need to calculate average rating per movie -->
-        </ul>
-    {% endfor %}
+    <h1> The Top 20 Movies of the entire history of film</h1>
+    <p> These films were evaluated by a cross-section of regular moviegoers who rated them.</p>
+    <p> Each movie shows it's average rating. See more on a movie by clicking the link.</p>
+    <h3> And now, the Top 20:</h3>
+    <h3> {{ top_movies }} </h3>
+
+
 </body>
 </html>
