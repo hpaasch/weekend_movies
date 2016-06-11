@@ -1,7 +1,11 @@
 from django.shortcuts import render
 
+from django.http import HttpResponseRedirect
+
+from rate_the_movies.forms import NewRating
+
 from rate_the_movies.models import Rating, Rater, Movie, TopMovie
-from django.db.models import Avg, Count
+from django.db.models import Avg
 
 
 def top_movies(request):
@@ -30,6 +34,16 @@ def one_movie(request, movie_id):
         "ratings": Rating.objects.filter(movie=movie_id)
     }
     return render(request, "one_movie.html", context)
+
+
+def get_rating(request):
+    if request.method == 'POST':
+        form = NewRating(request.POST)
+        if form.is_valid():
+            return HttpResponseRedirect('/Thanks!/')
+    else:
+        form = NewRating()
+    return render(request, 'add_rating.html', {'form': form})
 
 
 def homepage(request):

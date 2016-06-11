@@ -23,5 +23,6 @@ urlpatterns = [
     url(r'^$', views.homepage),
     url(r'^top_movies/$', views.top_movies),
     url(r'^movie_id/(?P<movie_id>\d+)/$', views.one_movie),
-    url(r'^rater_id/(?P<rater_id>\d+)/$', views.one_rater)
+    url(r'^rater_id/(?P<rater_id>\d+)/$', views.one_rater),
+    url(r'^add_rating/$', views.get_rating),
 ]
