@@ -19,7 +19,7 @@ def one_rater(request, rater_id):
     context = {
             "rater": Rater.objects.get(id=rater_id),
             "id": rater_id,
-            "ratings": Rating.objects.filter(rater=rater_id),
+            "ratings": Rating.objects.filter(rater=rater_id).order_by('-rating'),
             "total": Rating.objects.filter(rater=rater_id).count(),
             "average": Rating.objects.filter(rater=rater_id).aggregate(Avg('rating')),
         }
@@ -40,6 +40,7 @@ def get_rating(request):
     if request.method == 'POST':
         form = NewRating(request.POST)
         if form.is_valid():
+            form.save()
             return HttpResponseRedirect('/Thanks!/')
     else:
         form = NewRating()
@@ -48,5 +49,3 @@ def get_rating(request):
 
 def homepage(request):
     return render(request, "homepage.html")
-
-

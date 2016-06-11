@@ -5,7 +5,7 @@
     <title>Big Movie Extravaganza</title>
 </head>
 <body>
-    <form action="/new-rating/" method="post">
+    <form action="/add_rating/" method="post">
         {% csrf_token %}
         {{ form }}
         <input type="submit" value="Submit" />

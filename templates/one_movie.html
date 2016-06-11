@@ -10,7 +10,7 @@
     <h5>Video release date: {{ movie.video_release_date }}</h5>
 
     <h3>This movie has been rated by {{ total }} people.</h3>
-    <h3>The average rating is {{ average }} needs to be prettier</h3>
+    <h3>The average rating is {{ average }} with 5 as the highest </h3>
     <h4>List of raters for this movie. Click for more on that person.</h4>
     {% for item in ratings %}
     <p> <a href="/rater_id/{{ item.rater_id }}"> Rater ID {{ item.rater_id }} </a> gave it {{ item.rating }} stars</p>

@@ -11,8 +11,8 @@
     <p>Gender: {{ rater.gender }}</p>
     <p>ZIP: {{ rater.zip_code }}</p>
     <p>Number of movies rated: {{ total }}</p>
-    <p>Average rating: {{ average }} out of 5 </p>
-    <p>Movie ratings: </p>
+    <p>Average rating: {{ average }} with 5 as the highest </p>
+    <p>Movies this person has rated, starting with the highest rated: </p>
     {% for item in ratings %}
     <p> <a href="/movie_id/{{ item.movie_id }}" > {{ item.movie }} </a> -- {{ item.rating }} </p>
     {% endfor %}

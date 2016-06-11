@@ -5,12 +5,17 @@
     <title>Big Movie Extravaganza</title>
 </head>
 <body>
-    <h1> The Top 20 Movies of the entire history of film</h1>
-    <p> These films were evaluated by a cross-section of regular moviegoers who rated them.</p>
-    <p> Each movie shows it's average rating. See more on a movie by clicking the link.</p>
+    <h1> The Top 20 Movies of the entire history of film. Not really.</h1>
+    <p> These films were evaluated by a cross-section of regular moviegoers, many of whom have
+        rated a number of movies.</p>
+    <p> The results are weighted to focus on movies that at least 100 people rated, using that
+    as a measure of intense interest. The first number after a movie title is the number of ratings
+        it has. The average rating is then shown. </p>
+    <p>The movies are listed in descending order based on average rating, with the best movie at the top.</p>
+    <p> Each movie shows its average rating. See more on a movie by clicking on it.</p>
     <h3> And now, the Top 20:</h3>
     {% for movie in top_movies %}
-    <p> <a href="/movie_id/{{ movie.movie_id }}">{{ movie.movie.movie_title }} </a> {{ movie.avg_rating }} </p>
+    <p> <a href="/movie_id/{{ movie.movie_id }}">{{ movie.movie.movie_title }} </a> -- {{ movie.times_rated }}-- {{ movie.avg_rating }} </p>
     {% endfor %}
 
 
