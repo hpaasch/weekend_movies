@@ -1,17 +1,15 @@
 from django.shortcuts import render
 
-# Create your views here.
 from rate_the_movies.models import Rating, Rater, Movie
 from django.db.models import Avg, Count
 
 def top_movies(request):
     context = {
-        "top_movies": Rating.objects.order_by('-rating')[:20],
+        "top_movies": (Rating.objects.annotate(xxx=Count('yyy').order_by('-xxx')[:20]),
         # Publisher.objects.annotate(num_books=Count('book')).order_by('-num_books')[:5]
 
     }
     return render(request, "movie_list.html", context)
-    # deliver each movie's average rating
 
 
 def one_rater(request, rater_id):
@@ -23,7 +21,6 @@ def one_rater(request, rater_id):
             "average": Rating.objects.filter(rater=rater_id).aggregate(Avg('rating')),
         }
     return render(request, "one_rater.html", context)
-        # deliver each movie's average rating
 
 
 def one_movie(request, movie_id):

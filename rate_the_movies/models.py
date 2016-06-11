@@ -8,7 +8,7 @@ class Rater(models.Model):
     zip_code = models.CharField(max_length=10)
 
     def __str__(self):
-        return self.occupation
+        return self.id
 
     # def average_score(self):
         # deliver each rater's avg rating
