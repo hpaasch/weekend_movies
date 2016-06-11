@@ -6,9 +6,7 @@ from django.db.models import Avg, Count
 
 def top_movies(request):
     context = {
-        "top_movies": TopMovie.objects.all().order_by('-times_rated', '-avg_rating')[:20],
-        # "average": TopMovie.objects.filter(movie)
-
+        "top_movies": TopMovie.objects.filter(times_rated__gte=100).order_by('-avg_rating')[:20]
     }
     return render(request, "movie_list.html", context)
 

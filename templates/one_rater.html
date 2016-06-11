@@ -11,10 +11,10 @@
     <p>Gender: {{ rater.gender }}</p>
     <p>ZIP: {{ rater.zip_code }}</p>
     <p>Number of movies rated: {{ total }}</p>
-    <p>Average rating: {{ average }} out of 5 ... MAKE PRETTIER</p>
+    <p>Average rating: {{ average }} out of 5 </p>
     <p>Movie ratings: </p>
     {% for item in ratings %}
-    <p>{{ item.movie }} -- {{ item.rating }}</p>
+    <p> <a href="/movie_id/{{ item.movie_id }}" > {{ item.movie }} </a> -- {{ item.rating }} </p>
     {% endfor %}
 <!-- movies need to link to movie page. probably use a .. movie_id.movie_title.-->
 </body>
