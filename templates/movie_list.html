@@ -14,9 +14,11 @@
     <p>The movies are listed in descending order based on average rating, with the best movie at the top.</p>
     <p> Each movie shows its average rating. See more on a movie by clicking on it.</p>
     <h3> And now, the Top 20:</h3>
+    <ol>
     {% for movie in top_movies %}
-    <p> <a href="/movie_id/{{ movie.movie_id }}">{{ movie.movie.movie_title }} </a> -- {{ movie.times_rated }}-- {{ movie.avg_rating }} </p>
+    <li> <a href="/movie_id/{{ movie.movie_id }}">{{ movie.movie.movie_title }} </a> -- {{ movie.times_rated }}-- {{ movie.avg_rating }} </li>
     {% endfor %}
+    </ol>
 
 
 </body>

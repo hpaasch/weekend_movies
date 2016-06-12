@@ -11,11 +11,12 @@
     <p>Gender: {{ rater.gender }}</p>
     <p>ZIP: {{ rater.zip_code }}</p>
     <p>Number of movies rated: {{ total }}</p>
-    <p>Average rating: {{ average }} with 5 as the highest </p>
-    <p>Movies this person has rated, starting with the highest rated: </p>
+    <p>This person gave an average rating of {{ average.rating__avg }} with 5 as the highest </p>
+    <p>Go back to <a href="/top_movies/" >The Top 20 movies</a>. Or continue reading for movies this person has rated, starting with the highest rated: </p>
+    <ol>
     {% for item in ratings %}
-    <p> <a href="/movie_id/{{ item.movie_id }}" > {{ item.movie }} </a> -- {{ item.rating }} </p>
+    <li> <a href="/movie_id/{{ item.movie_id }}" > {{ item.movie }} </a> -- {{ item.rating }} </li>
     {% endfor %}
-<!-- movies need to link to movie page. probably use a .. movie_id.movie_title.-->
+    </ol>
 </body>
 </html>

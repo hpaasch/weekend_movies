@@ -1,6 +1,7 @@
 from django.shortcuts import render
 
 from django.http import HttpResponseRedirect
+from django.http import HttpResponse
 
 from rate_the_movies.forms import NewRating
 
@@ -31,7 +32,7 @@ def one_movie(request, movie_id):
         "movie": Movie.objects.get(id=movie_id),
         "average": Rating.objects.filter(movie=movie_id).aggregate(Avg('rating')),
         "total": Rating.objects.filter(movie=movie_id).count(),
-        "ratings": Rating.objects.filter(movie=movie_id)
+        "ratings": Rating.objects.filter(movie=movie_id).order_by('-rating')
     }
     return render(request, "one_movie.html", context)
 
@@ -41,7 +42,7 @@ def get_rating(request):
         form = NewRating(request.POST)
         if form.is_valid():
             form.save()
-            return HttpResponseRedirect('/Thanks!/')
+            return HttpResponseRedirect("/top_movies/")
     else:
         form = NewRating()
     return render(request, 'add_rating.html', {'form': form})

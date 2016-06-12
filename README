@@ -1,5 +1,40 @@
+Running the server will take you to a homepage where you can choose to see the
+Top 20 movies or you can choose to rate a movie.
+
+Top 20 movies displays a list of movies. This page is based on creation of a
+fourth table in the database that holds each movie's average rating and its
+total number of raters. The logic for the "top" movies is in
+the description on the page. The movies are listed with the "best" at the top.
+You can click the movie title to go that movie's page from the database.
+
+A movie's page shows you the basics about the movie, including a hyperlink of
+the title to take you to the imdb page on that movie. You see how many people
+rated that movie, and what the average rating is. (Finally found the simple way
+to display the rating number NOT in a dictionary format. Just adding a .keyname
+to the "average" variable. That approach would've simplified
+the code in my data migration for the Top 20 table.) You can scroll through
+the list of people who rated that movie. They are listed from best ratings to
+lowest ratings. Click on any rater to see that rater's page from the database.
+You also can choose to go back to the Top 20 page.
+
+A rater's page shows you the basics on that person, including how many movies
+the person has rated and the average rating the person gave out. You can
+scroll through all the movies the person rated, and click to go to that movie's
+page. You also can choose to go back to the Top 20 page.
+
+From the homepage, you can click to add a rating for a movie. This form is very
+basic and doesn't behave in all the ways I would like, but it does allow a new
+rating to be submitted for a movie in the database, using the ID of an existing
+user. The entry really shows up in the database.
+
+
+
+
+
+
+----Note about the data----
 To make the schema and data migrations slightly more challenging, I changed the
-filenames like so:
+filenames on the original data files. The line up goes like so:
 u.rater = u.user
 u.movie = u.item
 u.rating = u.data
